@@ -1,0 +1,7 @@
+dist
+.yarn
+node_modules
+nginx
+.idea
+README.md
+src/routeTree.gen.ts
