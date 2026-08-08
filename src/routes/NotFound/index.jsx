@@ -1,10 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Title, Text, Button, Container, Group } from '@mantine/core';
 import { useNavigate } from 'react-router';
 import classes from './notfound.module.css';
+import useDocumentTitle from '../../hooks/useDocumentTitle/index.js';
 
 const NotFound = () => {
   const navigate = useNavigate();
+
+  useDocumentTitle('Not Found | txt-diff');
 
   /**
    * Go to the home page
@@ -12,10 +15,6 @@ const NotFound = () => {
   const goHome = () => {
     navigate('/');
   };
-
-  useEffect(() => {
-    document.title = 'Not Found | CodeDead';
-  }, []);
 
   return (
     <Container className={classes.root}>

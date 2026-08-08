@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import {
   Container,
   Group,
@@ -9,35 +9,18 @@ import {
   Drawer,
   ScrollArea,
   Divider,
-  rem, ActionIcon
+  rem,
+  ActionIcon,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { IconSun, IconSunOff } from '@tabler/icons-react';
-import { useNavigate } from 'react-router';
+import { Link, useLocation } from 'react-router';
 import classes from './headerbar.module.css';
-import { MainContext } from '../../context/MainContext/index.jsx';
 
 const HeaderBar = () => {
   const { toggleColorScheme } = useMantineColorScheme();
   const [opened, { toggle }] = useDisclosure(false);
-  const [state] = useContext(MainContext);
-  const navigate = useNavigate();
-
-  const { pageIndex } = state;
-
-  /**
-   * Open the privacy policy in a new tab
-   */
-  const openPrivacy = () => {
-    window.open('https://codedead.com/privacy', '_blank');
-  };
-
-  /**
-   * Open the contact page in a new tab
-   */
-  const openContact = () => {
-    window.open('https://codedead.com/contact', '_blank');
-  };
+  const { pathname } = useLocation();
 
   /**
    * Change the color scheme
@@ -46,61 +29,49 @@ const HeaderBar = () => {
     toggleColorScheme();
   };
 
-  /**
-   * Click the scroll link
-   * @param event The event argument
-   * @param link The link to navigate to
-   */
-  const clickScrollLink = (event, link) => {
-    event.preventDefault();
-
-    toggle();
-    navigate(link);
-  };
-
   return (
     <Container size="xl" className={classes.inner}>
       <Title
         order={1}
         style={{ cursor: 'pointer' }}
-        onClick={() => navigate('/')}
+        renderRoot={(props) => (
+          <Link
+            to="/"
+            style={{ textDecoration: 'none', color: 'inherit' }}
+            {...props}
+          />
+        )}
       >
         txt-diff
       </Title>
       <Group gap={5} visibleFrom="xs">
-        <a
-          href={'/'}
+        <Link
+          to="/"
           className={classes.link}
-          data-active={pageIndex === 0 ? true : undefined}
-          onClick={(event) => {
-            clickScrollLink(event, '/');
-          }}
+          data-active={pathname === '/' ? true : undefined}
         >
           Home
-        </a>
-        <a
-          href={'/about'}
+        </Link>
+        <Link
+          to="/about"
           className={classes.link}
-          data-active={pageIndex === 1 ? true : undefined}
-          onClick={(event) => {
-            clickScrollLink(event, '/about');
-          }}
+          data-active={pathname === '/about' ? true : undefined}
         >
           About
-        </a>
+        </Link>
         <a
-          key="privacy"
-          href={'#'}
+          href="https://codedead.com/privacy"
+          target="_blank"
+          rel="noopener noreferrer"
           className={classes.link}
-          onClick={openPrivacy}
         >
           Privacy
         </a>
         <a
-          key="contact"
-          href={'#'}
+          href="https://codedead.com/contact"
+          target="_blank"
+          rel="noopener noreferrer"
           className={classes.link}
-          onClick={openContact}
         >
           Contact
         </a>
@@ -148,26 +119,38 @@ const HeaderBar = () => {
       >
         <ScrollArea h={`calc(100vh - ${rem(80)})`} mx="-md">
           <Divider my="sm" />
-          <a
-            href="/"
+          <Link
+            to="/"
             className={classes.link}
-            data-active={pageIndex === 0 ? true : undefined}
-            onClick={(e) => clickScrollLink(e, '/')}
+            data-active={pathname === '/' ? true : undefined}
+            onClick={toggle}
           >
             Home
-          </a>
-          <a
-            href="/about"
+          </Link>
+          <Link
+            to="/about"
             className={classes.link}
-            data-active={pageIndex === 1 ? true : undefined}
-            onClick={(e) => clickScrollLink(e, '/about')}
+            data-active={pathname === '/about' ? true : undefined}
+            onClick={toggle}
           >
             About
-          </a>
-          <a href="#" className={classes.link} onClick={openContact}>
+          </Link>
+          <a
+            href="https://codedead.com/contact"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={classes.link}
+            onClick={toggle}
+          >
             Contact
           </a>
-          <a href="#" className={classes.link} onClick={openPrivacy}>
+          <a
+            href="https://codedead.com/privacy"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={classes.link}
+            onClick={toggle}
+          >
             Privacy
           </a>
         </ScrollArea>

@@ -1,14 +1,28 @@
-import { SET_PAGE_INDEX } from "./Actions/ActionTypes/index.js";
+import {
+  SET_HIGHLIGHTS,
+  SET_TEXT_A,
+  SET_TEXT_B,
+} from './Actions/ActionTypes/index.js';
 
 const MainReducer = (state, action) => {
   switch (action.type) {
-    case SET_PAGE_INDEX:
+    case SET_TEXT_A:
       return {
         ...state,
-        pageIndex: action.payload,
+        textA: action.payload,
+      };
+    case SET_TEXT_B:
+      return {
+        ...state,
+        textB: action.payload,
+      };
+    case SET_HIGHLIGHTS:
+      return {
+        ...state,
+        highlights: action.payload,
       };
     default:
-      throw new Error();
+      throw new Error(`Unknown action type: ${action.type}`);
   }
 };
 

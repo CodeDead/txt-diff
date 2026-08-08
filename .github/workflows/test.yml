@@ -1,0 +1,26 @@
+name: Test
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+  push:
+    branches:
+      - main
+      - development
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Install modules
+        run: yarn
+
+      - name: Run ESLint
+        run: yarn run lint
+
+      - name: Run Prettier
+        run: yarn run format

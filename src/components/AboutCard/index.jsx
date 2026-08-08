@@ -7,14 +7,14 @@ const AboutCard = ({ className }) => {
    * Open the donation page in a new tab
    */
   const openDonate = () => {
-    window.open('https://codedead.com/donate', '_blank');
+    window.open('https://codedead.com/donate', '_blank', 'noopener,noreferrer');
   };
 
   /**
    * Open the CodeDead website in a new tab
    */
   const openCodeDead = () => {
-    window.open('https://codedead.com/', '_blank');
+    window.open('https://codedead.com/', '_blank', 'noopener,noreferrer');
   };
 
   return (

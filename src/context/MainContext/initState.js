@@ -1,3 +1,5 @@
 export const initialState = {
-  pageIndex: 0,
+  textA: '',
+  textB: '',
+  highlights: null,
 };

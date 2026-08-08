@@ -12,7 +12,9 @@ const Footer = () => (
     <Text
       size="lg"
       style={{ cursor: 'pointer' }}
-      onClick={() => window.open('https://codedead.com/', '_blank')}
+      onClick={() =>
+        window.open('https://codedead.com/', '_blank', 'noopener,noreferrer')
+      }
     >
       Copyright © {new Date().getFullYear()} CodeDead
     </Text>
@@ -23,7 +25,11 @@ const Footer = () => (
         color="gray"
         variant="subtle"
         onClick={() =>
-          window.open('https://bsky.app/profile/codedead.com', '_blank')
+          window.open(
+            'https://bsky.app/profile/codedead.com',
+            '_blank',
+            'noopener,noreferrer',
+          )
         }
       >
         <IconBrandBluesky
@@ -36,7 +42,13 @@ const Footer = () => (
         size="lg"
         color="gray"
         variant="subtle"
-        onClick={() => window.open('https://mstdn.social/@CodeDead', '_blank')}
+        onClick={() =>
+          window.open(
+            'https://mstdn.social/@CodeDead',
+            '_blank',
+            'noopener,noreferrer',
+          )
+        }
       >
         <IconBrandMastodon
           style={{ width: rem(18), height: rem(18) }}
@@ -48,7 +60,13 @@ const Footer = () => (
         size="lg"
         color="gray"
         variant="subtle"
-        onClick={() => window.open('https://github.com/CodeDead/', '_blank')}
+        onClick={() =>
+          window.open(
+            'https://github.com/CodeDead/',
+            '_blank',
+            'noopener,noreferrer',
+          )
+        }
       >
         <IconBrandGithub
           style={{ width: rem(18), height: rem(18) }}

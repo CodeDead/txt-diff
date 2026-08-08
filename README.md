@@ -1,16 +1,46 @@
-# React + Vite
+# txt-diff
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![GitHub top language](https://img.shields.io/github/languages/top/CodeDead/txt-diff)
+![GitHub](https://img.shields.io/github/license/CodeDead/txt-diff)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/CodeDead/txt-diff)
 
-Currently, two official plugins are available:
+txt-diff is a free and open-source application that can help you compare two text files and visualize the differences.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+For a live version of the application, visit [our website](https://txt-diff.codedead.com).
 
-## React Compiler
+## Building
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Web
 
-## Expanding the ESLint configuration
+You can build a web version of `txt-diff` using `Vite` by running the following command:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```shell
+yarn build
+```
+
+For more information about building the web version, please read the `Vite` documentation [here](https://vitejs.dev/guide/build.html).
+
+## Credits
+
+### ReactJS
+
+This project uses [React](https://reactjs.org/) to create the user interface.
+
+### Theme
+
+The theme used in this application is [Mantine](https://mantine.dev/).
+
+### Images
+
+The application icon (and derivatives) are provided by [Tabler](https://tabler.io/).  
+[Mantine](https://mantine.dev/) provided all other images.
+
+## About
+
+This library is maintained by CodeDead. You can find more about us using the following links:
+* [Website](https://codedead.com/)
+* [Bluesky](https://bsky.app/profile/codedead.com)
+* [Facebook](https://facebook.com/deadlinecodedead/)
+* [Reddit](https://www.reddit.com/r/CodeDead/)
+
+Copyright © 2026 CodeDead

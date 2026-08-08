@@ -1,17 +1,11 @@
-import React, { useContext, useEffect } from 'react';
-import {Accordion, Anchor, Container, Title} from '@mantine/core';
+import React from 'react';
+import { Accordion, Container, Title } from '@mantine/core';
 import classes from './about.module.css';
 import AboutCard from '../../components/AboutCard/index.jsx';
-import { MainContext } from '../../context/MainContext/index.jsx';
-import { setPageIndex } from '../../reducer/MainReducer/Actions/index.js';
+import useDocumentTitle from '../../hooks/useDocumentTitle/index.js';
 
 const About = () => {
-  const [, dispatch] = useContext(MainContext);
-
-  useEffect(() => {
-    dispatch(setPageIndex(1));
-    document.title = 'About | txt-diff';
-  }, [dispatch]);
+  useDocumentTitle('About | txt-diff');
 
   return (
     <Container>
@@ -22,19 +16,24 @@ const About = () => {
         </Title>
 
         <Accordion variant="separated">
-          <Accordion.Item className={classes.item} value="download-desktop-version">
+          <Accordion.Item
+            className={classes.item}
+            value="download-desktop-version"
+          >
             <Accordion.Control>
               Is there a desktop version available?
             </Accordion.Control>
             <Accordion.Panel>
-              Not at the moment. If you'd like us to create a desktop version, please let us know!
+              Not at the moment. If you&apos;d like us to create a desktop
+              version, please let us know!
             </Accordion.Panel>
           </Accordion.Item>
 
           <Accordion.Item className={classes.item} value="another-account">
             <Accordion.Control>Do you store my text data?</Accordion.Control>
             <Accordion.Panel>
-              No. Difference detection is done entirely on your own device and your text data does not pass our servers.
+              No. Difference detection is done entirely on your own device and
+              your inputted data does not pass our servers.
             </Accordion.Panel>
           </Accordion.Item>
 
