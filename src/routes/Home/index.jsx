@@ -18,6 +18,14 @@ import {
 } from '../../reducer/MainReducer/Actions/index.js';
 import { diffLines } from '../../utils/diff.js';
 
+const MIN_ROWS = 10;
+
+/**
+ * Count the number of lines in the given text
+ * @param text The text to count the lines of
+ */
+const countLines = (text) => (text === '' ? 1 : text.split('\n').length);
+
 const Home = () => {
   const [{ textA, textB, highlights }, dispatch] = useContext(MainContext);
 
@@ -83,6 +91,7 @@ const Home = () => {
   };
 
   const hasInput = textA !== '' || textB !== '';
+  const minRows = Math.max(MIN_ROWS, countLines(textA), countLines(textB));
 
   return (
     <Container size="xl">
@@ -93,7 +102,7 @@ const Home = () => {
           autoFocus
           value={textA}
           onChange={changeTextA}
-          minRows={10}
+          minRows={minRows + 1}
           maxRows={Number.MAX_SAFE_INTEGER}
           highlights={highlights?.a}
         />
@@ -102,7 +111,7 @@ const Home = () => {
           placeholder="Paste or type the modified text here"
           value={textB}
           onChange={changeTextB}
-          minRows={10}
+          minRows={minRows + 1}
           maxRows={Number.MAX_SAFE_INTEGER}
           highlights={highlights?.b}
         />
